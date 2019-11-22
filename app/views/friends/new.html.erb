@@ -1,0 +1,32 @@
+<h1>Create a new friend!</h1>
+<hr/>
+
+<h3>Create with form_with</h3>
+<%= form_with model: @friend, url: friends_path do |form|%>
+<%= form.label :first_name%>
+<%= form.text_field :first_name%>
+<%= form.label :last_name%>
+<%= form.text_field :last_name%>
+<%= form.label :favorite_color%>
+<%= form.text_field :favorite_color%><br><br>
+<%= form.submit%>
+<% end%>
+<hr>
+<h3>Create with form_for (formal version)</h3>
+<%= form_for @friend do |form|%>
+<%= form.label :first_name%>
+<%= form.text_field :first_name%>
+<%= form.label :last_name%>
+<%= form.text_field :last_name%>
+<%= form.label :favorite_color%>
+<%= form.text_field :favorite_color%><br><br>
+<%= form.submit%>
+<% end%>
+<hr>
+
+
+<p><%= link_to '<- Back', friends_path %></p>
+
+
+
+

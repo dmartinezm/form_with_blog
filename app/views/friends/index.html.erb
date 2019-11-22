@@ -1,0 +1,29 @@
+<h1>These are all the friends</h1>
+
+<h3>Search with form_with</h3>
+<%# Note that form_with is sent via XHR (a.k.a remote: true) by default, and you have to add local: true to make it behave like form_tag's default remote: false %>
+<%= form_with url: friends_path, method: :get, local: true do |form|%>
+<%= form.label :first_name , "Search for:"%>
+<%= form.text_field :first_name, placeholder: "enter first name"%>
+<%= form.submit "Search", name: nil%>
+<% end %>
+<hr>
+
+<h3>Search with form_tag (simple version)</h3>
+<%= form_tag  friends_path, method: :get do %>
+<%= label_tag :first_name , "Search for:"%>
+<%= text_field_tag :first_name, nil, placeholder: "enter first name"%>
+<%= submit_tag "Search", name: nil%>
+
+<% end %>
+<hr>
+
+<% @friends.each do |friend|%>
+<ul>
+<li><%= link_to friend.to_s, friend_path(friend)%></li>
+</ul>
+
+
+<% end%>
+
+<h3><%= link_to 'Add new friend', new_friend_path %></h3>
